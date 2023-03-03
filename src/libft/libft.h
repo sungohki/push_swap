@@ -6,7 +6,7 @@
 /*   By: sungohki <sungohki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 18:15:46 by sungohki          #+#    #+#             */
-/*   Updated: 2023/03/03 17:03:53 by sungohki         ###   ########.fr       */
+/*   Updated: 2023/03/03 18:12:19 by sungohki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-}					t_list;
+}				t_list;
 size_t	ft_strlen(const char *string);
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
