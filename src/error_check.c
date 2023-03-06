@@ -6,7 +6,7 @@
 /*   By: sungohki <sungohki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 17:42:31 by sungohki          #+#    #+#             */
-/*   Updated: 2023/03/06 18:52:53 by sungohki         ###   ########.fr       */
+/*   Updated: 2023/03/06 19:14:35 by sungohki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ int	error_check(int argc, char *argv[])
 	while (index <= (argc - 1))
 	{
 		if (is_numeric(argv[index]) == 0)
-			return (0);
+			return (1);
 		if (is_integer(argv[index]) == 0)
-			return (0);
+			return (1);
 	}
-	return (1);
+	return (0);
 }
