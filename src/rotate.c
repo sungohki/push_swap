@@ -6,7 +6,7 @@
 /*   By: sungohki <sungohki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:48:38 by sungohki          #+#    #+#             */
-/*   Updated: 2023/03/03 19:27:23 by sungohki         ###   ########.fr       */
+/*   Updated: 2023/03/13 17:48:54 by sungohki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 
 static void	rotate_node(t_list *ex)
 {
-	t_list	*ex_2nd;
+	t_list	*ex_last_2nd;
 	t_list	*ex_last;
 
 	if (ex == 0)
 		return ;
-	ex_2nd = ex->next;
-	ex_last = ft_lstlast(ex);
-	ex->next = NULL;
+	ex_last_2nd = ex;
+	while (ex_last_2nd->next->next != 0)
+		ex_last_2nd = ex_last_2nd->next;
+	ex_last = ex_last_2nd->next;
 	ex_last->next = ex;
-	ex = ex_2nd;
+	ex_last_2nd->next = NULL;
+	ex = ex_last;
 }
 
 void	ra(t_list *a)
