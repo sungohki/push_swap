@@ -6,7 +6,7 @@
 /*   By: sungohki <sungohki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 17:42:31 by sungohki          #+#    #+#             */
-/*   Updated: 2023/03/06 19:14:35 by sungohki         ###   ########.fr       */
+/*   Updated: 2023/03/13 18:50:28 by sungohki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static int	is_integer(char *argv)
 	else
 		return (0);
 }
+// 정수 범위 내의 정수를 표현하는 문자열 인지 판별 -> 0 : 정수 아님 1: 정수임
+// atoi 이후 바로 itoa를 통해서 동일한 지 비교
 
 static int	is_numeric(char *argv)
 {
@@ -49,21 +51,27 @@ static int	is_numeric(char *argv)
 	}
 	return (1);
 }
+// argv가 숫자를 표현하는 문자열 인지 판별 -> 0 : 숫자 아님 1 : 숫자임
+// atoi 결과가 0일 때, argv가 진짜 "0"이어서 0인지 비교
 
-int	error_check(int argc, char *argv[])
+int	*error_check(int argc, char *argv[])
 {
 	int		index;
-	char	*argv_num;
+	int		*nodes;
 
-	if (argc <= 1)
-		return (1);
 	index = 1;
 	while (index <= (argc - 1))
 	{
 		if (is_numeric(argv[index]) == 0)
-			return (1);
+			return (0);
 		if (is_integer(argv[index]) == 0)
-			return (1);
+			return (0);
 	}
-	return (0);
+	nodes = atoi_arr(argc - 1, argv);
+	if (indexing_arr(argc - 1, nodes) == 0)
+	{
+		free(nodes);
+		return (0);
+	}
+	return (nodes);
 }

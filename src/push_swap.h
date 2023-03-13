@@ -6,7 +6,7 @@
 /*   By: sungohki <sungohki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:44:12 by sungohki          #+#    #+#             */
-/*   Updated: 2023/03/06 21:24:30 by sungohki         ###   ########.fr       */
+/*   Updated: 2023/03/13 19:08:55 by sungohki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,13 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 
-int		error_check(int argc, char *argv[]);
+t_list	*push_swap(int argc, char *argv[]);
+int		*error_check(int argc, char *argv[]);
+
+void	init_stack(t_list *stack, int argc, int *arr);
+void	set_pivot(t_list *ex, int *pivot1, int *pivot2);
+int		*atoi_arr(int argc, char *argv[]);
+int		indexing_arr(int num, int *nodes);
 
 void	sa(t_list *a);
 void	sb(t_list *b);

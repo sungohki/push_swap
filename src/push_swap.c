@@ -6,58 +6,28 @@
 /*   By: sungohki <sungohki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 17:50:58 by sungohki          #+#    #+#             */
-/*   Updated: 2023/03/06 21:09:44 by sungohki         ###   ########.fr       */
+/*   Updated: 2023/03/13 18:40:08 by sungohki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	init_stack(t_list *stack, int argc, char **argv)
-{
-	int		index;
-	int		content;
-	t_list	*temp;
-
-	index = 1;
-	content = ft_atoi(argv[index++]);
-	stack = ft_lstnew(&content);
-	while (index <= argc - 1)
-	{
-		content = ft_atoi(argv[index++]);
-		temp = ft_lstnew(&content);
-		ft_lstadd_back(stack, temp);
-	}
-}
-
-int	set_pivot(t_list *ex)
-{
-	int		min;
-	int		max;
-
-	min = *((int *)ex->content);
-	max = *((int *)ex->content);
-	while (ex->next == NULL)
-	{
-		if (min > *((int *)ex->content))
-			min = *((int *)ex->content);
-		if (max < *((int *)ex->content))
-			max = *((int *)ex->content);
-	}
-	return ((max + min) / 3);
-}
-
-void	push_swap(int argc, char *argv[])
+t_list	*push_swap(int argc, char *argv[])
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
+	int		*nodes;
 
-	if (error_check(argc, argv))
+	if (argc <= 1)
+		return (0);
+	nodes = error_check(argc, argv);
+	if (nodes == 0)
 	{
-		write(1, "Error\n", 6);
-		return ;
+		write(1, "error\n", 6);
+		return (0);
 	}
-	else
-	{
-		fill_stack(stack_a, argc, argv);
-	}
+	init_stack(stack_a, argc - 1, nodes);
+	return (stack_a);
 }
+// argc는 1부터 시작, 노드 수는 argc - 1 개
+// argv는 argv[1]부터 시작

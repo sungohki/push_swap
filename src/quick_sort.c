@@ -6,14 +6,17 @@
 /*   By: sungohki <sungohki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:56:34 by sungohki          #+#    #+#             */
-/*   Updated: 2023/03/06 22:01:50 by sungohki         ###   ########.fr       */
+/*   Updated: 2023/03/13 19:30:45 by sungohki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	quick_sort(t_list *a, t_list *b)
+void	stack_a_to_b(t_list *a, t_list *b, int range)
 {
-	
 }
-	
+
+void	stack_b_to_a(int range)
+{
+
+}
