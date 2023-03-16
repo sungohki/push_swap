@@ -6,7 +6,7 @@
 /*   By: sungohki <sungohki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 18:20:38 by sungohki          #+#    #+#             */
-/*   Updated: 2023/03/13 19:15:57 by sungohki         ###   ########.fr       */
+/*   Updated: 2023/03/16 18:43:25 by sungohki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,23 +68,24 @@ void	init_stack(t_list *stack, int num, int *nodes)
 	}
 }
 
-void	set_pivot(t_list *ex, int *pivot0, int *pivot1)
+int	set_pivot(t_list *ex, int range)
 {
 	t_list		*temp;
-	int			rank;
+	int			value;
 	int			min;
 	int			max;
 
 	temp = ex;
-	min = 0;
-	max = 0;
-	while (temp->next != NULL)
+	min = *((int *)temp->content);
+	max = min;
+	while (temp->next != NULL && range--)
 	{
-		rank = *((int *)temp->content);
-		if (min > rank)
-			min = rank;
-		if (max < rank)
-			max = rank;
+		value = *((int *)(temp->content));
+		if (min > value)
+			min = value;
+		if (max < value)
+			max = value;
 		temp = temp->next;
 	}
+	return ((max + min) / 3);
 }
